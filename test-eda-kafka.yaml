@@ -1,0 +1,19 @@
+---
+- name: Demo rules with kafka as source
+  hosts: localhost
+  sources:
+    - name: Kafka
+      ansible.eda.kafka:
+        topic: eda
+        host: 10.1.14.10
+        port: 9092
+        group_id: testing
+  rules:
+    - name: Check defined
+      condition: event.i is defined
+      action:
+        debug:
+    - name: Stop
+      condition: event.stop == true
+      action:
+        debug:
