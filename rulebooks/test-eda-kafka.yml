@@ -4,16 +4,12 @@
   sources:
     - name: Kafka
       ansible.eda.kafka:
-        topic: eda
+        topic: connect-dnf
         host: 10.1.14.10
         port: 9092
-        group_id: testing
+        group_id:
   rules:
     - name: Check defined
       condition: event.i is defined
       action:
         debug:
-    - name: Stop
-      condition: event.stop == true
-      action:
-        shutdown:
